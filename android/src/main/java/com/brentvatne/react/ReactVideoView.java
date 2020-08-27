@@ -297,7 +297,7 @@ public class ReactVideoView extends ScalableVideoView implements
                  *   there is an issue with this where it can cause a IOException.
                  * TODO: diagnose this exception and fix it
                  */
-                setDataSource(parsedUrl, headers);
+                setDataSource(uriString);
             } else if (isAsset) {
                 if (uriString.startsWith("content://")) {
                     Uri parsedUrl = Uri.parse(uriString);
