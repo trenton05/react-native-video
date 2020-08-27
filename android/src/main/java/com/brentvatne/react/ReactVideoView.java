@@ -292,12 +292,13 @@ public class ReactVideoView extends ScalableVideoView implements
                 if (mRequestHeaders != null) {
                     headers.putAll(toStringMap(mRequestHeaders));
                 }
+                headers.put("Cache-control", "no-cache");
 
                 /* According to https://github.com/react-native-community/react-native-video/pull/537
                  *   there is an issue with this where it can cause a IOException.
                  * TODO: diagnose this exception and fix it
                  */
-                setDataSource(uriString);
+                setDataSource(mThemedReactContext, parsedUrl, headers);
             } else if (isAsset) {
                 if (uriString.startsWith("content://")) {
                     Uri parsedUrl = Uri.parse(uriString);
